@@ -5,3 +5,5 @@ Only the low frequency signal will pass. When the frequency is higher than the c
 Connect to picoscope to adjust the perriod of one triangle wave be the same as the 1/frequency we select.(use waiting function)
 We also write the value of Vout into ADCdata and print them on screen.
 The python code will read the value in ADCdata and then plot the figure.
+The result is that when the frequency is lower than the cut off frequency, the figure will be almost the same as the signal doesnt go through filter.
+Otherwise, the Vout will near zero.
