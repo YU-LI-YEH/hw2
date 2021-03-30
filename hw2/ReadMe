@@ -1,0 +1,7 @@
+Use up and down button to select a frequency on uLCD and then press confirm.
+We make a triangle waveform form the signal of mBed, then the signal goes through the low pass filter.
+We series two resistors so that the cut off frequency won't be too high.
+Only the low frequency signal will pass. When the frequency is higher than the cut off frequency, there is almost zero voltage.
+Connect to picoscope to adjust the perriod of one triangle wave be the same as the 1/frequency we select.(use waiting function)
+We also write the value of Vout into ADCdata and print them on screen.
+The python code will read the value in ADCdata and then plot the figure.
