@@ -6,19 +6,19 @@ import serial
 
 import time
 
-serdev = '/dev/ttyACM3'
+serdev = '/dev/ttyACM5'
 
 s = serial.Serial(serdev)
 
 freq = int(s.readline())
 
-Fs = 100.0 * freq;  # sampling rate
+Fs = 100.0;  # sampling rate
 
 Ts = 1.0/Fs; # sampling interval
 
-t = np.arange(0,1.0/freq,Ts) # time vector; create Fs samples between 0 and 1.0 sec.
+t = np.arange(0,1.0,Ts) # time vector; create Fs samples between 0 and 1.0 sec.
 
-y = np.arange(0,1.0/freq,Ts) # signal vector; create Fs samples
+y = np.arange(0,1.0,Ts) # signal vector; create Fs samples
 
 
 n = len(y) # length of the signal
@@ -30,7 +30,6 @@ T = n/Fs
 frq = k/T # a vector of frequencies; two sides frequency range
 
 frq = frq[range(int(n/2))] # one side frequency range
-
 
 
 
