@@ -6,6 +6,7 @@ DigitalIn up(D3);
 DigitalIn down(D8);
 DigitalIn sel(D5);
 AnalogOut sig(PA_4);
+AnalogIn sig_fil(A0);
 
 uLCD_4DGL uLCD(D1, D0, D2);
 
@@ -14,6 +15,7 @@ int main()
 {
     int fre = 360;
     float T = 1000 / fre;
+    float T2;
     float ADCdata[100];
     int confirm = 0;
     float i = 1.0f;
@@ -44,13 +46,17 @@ int main()
             sig = (100 - i) / 20.0f / 1.1f;
         if(i > 100)
             i = 0.0f;
-        wait_us((T * 10) - 19.3);
+        if(((T * 10) - 19.3) > 0)
+            T2 = (T * 10) - 19.3;
+        else
+            T2 = 0;
+        wait_us(T2);
 
         if(confirm) {
-            ADCdata[j - 1] = sig;
-            if(j == 100){
+            ADCdata[j - 1] = sig_fil;
+            if(j >= 100){
                 printf("%d\r\n", fre);
-                for (int k = 0; k < 100; k++){
+                for (int k = 0; k < 100; k+=1){
                     printf("%lf\r\n", ADCdata[k]);
                 }
                 j = 1;
