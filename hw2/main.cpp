@@ -57,7 +57,6 @@ int main()
 
         if(confirm) {
             if (a == (100 * fre / 500)){
-                printf("%d", a);
                 ADCdata[j - 1] = sig_fil;
                 if(j >= 500){
                     printf("%d\r\n", fre);
