@@ -6,13 +6,13 @@ import serial
 
 import time
 
-serdev = '/dev/ttyACM6'
+serdev = '/dev/ttyACM7'
 
 s = serial.Serial(serdev)
 
 freq = int(s.readline())
 
-Fs = 100.0;  # sampling rate
+Fs = 500.0;  # sampling rate
 
 Ts = 1.0/Fs; # sampling interval
 
@@ -33,7 +33,7 @@ frq = frq[range(int(n/2))] # one side frequency range
 
 
 
-for x in range(0, int(100)):
+for x in range(0, int(Fs)):
 
     line=s.readline() # Read an echo string from B_L4S5I_IOT01A terminated with '\n'
 
